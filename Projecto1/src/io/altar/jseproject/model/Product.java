@@ -3,17 +3,17 @@ package io.altar.jseproject.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Product {
-	private int id;
+public class Product extends Entity_{
+	private long id;
 	private List<Long> shelfIdList= new ArrayList<>();
 	private double discount;
 	private int iva;
 	private int price;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public List<Long> getShelfList() {
