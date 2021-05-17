@@ -1,11 +1,20 @@
 package io.altar.jseproject.textinterface;
 
+import java.util.Arrays;
+
+import io.altar.jseproject.model.Product;
+import io.altar.jseproject.model.Shelf;
+import io.altar.jseproject.repositories.ProductRepository;
+import io.altar.jseproject.repositories.ShelfRepository;
 import io.altar.jseproject.utils.ScannerUtils;
 
 public class TextInterface {
 	ScannerUtils scu = new ScannerUtils();
+	ProductRepository prodRep = ProductRepository.getInstance();
+	ShelfRepository shelfRep = ShelfRepository.getInstance();
 	
 	public void ecraInicio() {
+		fillMockData();
 		while(true) {
 			System.out.println("1) Listar Produtos");
 			System.out.println("2) Listar Prateleiras");
@@ -26,10 +35,10 @@ public class TextInterface {
 			}
 		}
 	}
-	
+
 	private void ecraProdutos() {
+		listarProdutos();
 		while(true) {
-			listarProdutos();
 			System.out.println("1) Criar novo produto");
 			System.out.println("2) Editar um produto existente");
 			System.out.println("3) Consultar o detalhe de um produto");
@@ -59,30 +68,51 @@ public class TextInterface {
 	}	
 	
 	private void listarProdutos() {
-		// TODO
-		System.out.println("... Lista de Produtos ...");
+		prodRep.getAll().forEach(x -> System.out.println(x));
+		
 	}
 
 	private void ecraCriarProduto() {
-		// TODO
-		System.out.println("... Ecra Criar Produto ...");
+		System.out.println("Inserir desconto");
+		double desconto = scu.getDouble();
+		System.out.println("Inserir iva");
+		int iva = scu.getInt();
+		System.out.println("Inserir preço");
+		int preco = scu.getInt();
+		Product p = new Product(desconto,iva,preco);
+		prodRep.createEntity(p);
+		System.out.println("--- Produto criado ---");
 	}
 	private void ecraEditarProduto() {
-		// TODO
-		System.out.println("... Ecra Editar Produto ...");
+		System.out.println("Inserir ID do produto");
+		long id = scu.getLong();
+		Product p = prodRep.getEntityById(id);
+		System.out.println("Inserir desconto");
+		p.setDiscount(scu.getDouble());
+		System.out.println("Inserir iva");
+		p.setIva(scu.getInt());
+		System.out.println("Inserir preço");
+		p.setPrice(scu.getInt());
+		prodRep.editEntity(p);
+		System.out.println("--- Produto editado ---");
 	}
+	
 	private void ecraConsultarProduto() {
-		// TODO
-		System.out.println("... Ecra Consultar Produto ...");
+		System.out.println("Inserir ID do produto");
+		long id = scu.getLong();
+		Product p = prodRep.getEntityById(id);
+		System.out.println(p);
 	}
 	private void ecraRemoverProduto() {
-		// TODO
-		System.out.println("... Ecra Remover Produto ...");
+		System.out.println("Inserir ID do produto");
+		long id = scu.getLong();
+		prodRep.removeEntityById(id);
+		System.out.println("--- Produto removido ---");
 	}
 
 	private void ecraPrateleira() {
+		listarPrateleiras();
 		while(true) {
-			listarPrateleiras();
 			System.out.println("1) Criar nova prateleira");
 			System.out.println("2) Editar uma prateleira existente");
 			System.out.println("3) Consultar o detalhe de uma prateleira");
@@ -112,24 +142,62 @@ public class TextInterface {
 	}
 	
 	private void listarPrateleiras() {
-		// TODO
-		System.out.println("... Lista de Prateleiras ...");
+		shelfRep.getAll().forEach(x -> System.out.println(x));
 	}
 
 	private void ecraCriarPrateleira() {
-		// TODO
-		System.out.println("... Ecra Criar Prateleira ...");
+		System.out.println("Inserir capacidade");
+		int capacity = scu.getInt();
+		System.out.println("Inserir preço diário de aluguer");
+		double dailyPrice = scu.getDouble();
+		Shelf sh = new Shelf(capacity, dailyPrice);
+		shelfRep.createEntity(sh);
+		System.out.println("--- Prateleira criada ---");
 	}
 	private void ecraEditarPrateleira() {
-		// TODO
-		System.out.println("... Ecra Editar Prateleira ...");
+		System.out.println("Inserir ID da prateleira");
+		long id = scu.getLong();
+		Shelf sh = shelfRep.getEntityById(id);
+		Product p = sh.getPr();
+		System.out.println("Inserir desconto");
+		p.setDiscount(scu.getDouble());
+		System.out.println("Inserir iva");
+		p.setIva(scu.getInt());
+		System.out.println("Inserir preço");
+		p.setPrice(scu.getInt());
+		System.out.println("Inserir capacidade");
+		sh.setCapacity(scu.getInt());
+		System.out.println("Inserir preço diário de aluguer");
+		sh.setDailyPrice(scu.getDouble());
+		shelfRep.editEntity(sh);
+		System.out.println("--- Prateleira editada ---");
 	}
 	private void ecraConsultarPrateleira() {
-		// TODO
-		System.out.println("... Ecra Consultar Prateleira ...");
+		System.out.println("Inserir ID da prateleira");
+		long id = scu.getLong();
+		Shelf sh = shelfRep.getEntityById(id);
+		System.out.println(sh);
 	}
 	private void ecraRemoverPrateleira() {
-		// TODO
-		System.out.println("... Ecra Remover Produto ...");
+		System.out.println("Inserir ID da prateleira");
+		long id = scu.getLong();
+		shelfRep.removeEntityById(id);
+		System.out.println("--- Prateleira removida ---");
+	}
+	
+	private void fillMockData() {
+		Product prod1 = new Product(Arrays.asList(1L),20,23,100);
+		prodRep.createEntity(prod1);
+		Product prod2 = new Product(Arrays.asList(2L),30,23,777);
+		prodRep.createEntity(prod2);
+		Product prod3 = new Product(Arrays.asList(3L),40,23,999);
+		prodRep.createEntity(prod3);
+		
+		Shelf sh1 = new Shelf(1, prod1, 99.99);
+		shelfRep.createEntity(sh1);
+		Shelf sh2 = new Shelf(1, prod2, 11.11);
+		shelfRep.createEntity(sh2);
+		Shelf sh3 = new Shelf(1, prod3, 77.77);
+		shelfRep.createEntity(sh3);	
 	}
 }

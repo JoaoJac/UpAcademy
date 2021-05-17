@@ -4,18 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product extends Entity_{
-	private long id;
 	private List<Long> shelfIdList= new ArrayList<>();
 	private double discount;
 	private int iva;
 	private int price;
 	
-	public Long getId() {
-		return id;
+	public Product() {
+		
 	}
-	public void setId(Long id) {
-		this.id = id;
+	
+	public Product(double discount, int iva, int price) {
+		this.discount = discount;
+		this.iva = iva;
+		this.price = price;
 	}
+
+	public Product(List<Long> shelfIdList, double discount, int iva, int price) {
+		this.shelfIdList = shelfIdList;
+		this.discount = discount;
+		this.iva = iva;
+		this.price = price;
+	}
+	
 	public List<Long> getShelfList() {
 		return shelfIdList;
 	}
@@ -43,7 +53,7 @@ public class Product extends Entity_{
 	
 	@Override
 	public String toString() {
-		return "Product [shelfIdList=" + shelfIdList + ", discount=" + discount + ", iva=" + iva + ", price=" + price + "]";
+		return "Product [ID="+this.getId()+", shelfIdList=" + shelfIdList + ", discount=" + discount + ", iva=" + iva + ", price=" + price + "]";
 	}
 		
 }

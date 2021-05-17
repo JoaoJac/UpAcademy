@@ -8,13 +8,15 @@ import io.altar.jseproject.model.Entity_;
 
 abstract class EntityRepository <T extends Entity_>{
 	Map<Long,T> mapIdEntity= new HashMap<>();
-	Long maxId;
+	long maxId = 1;
 	
-	private Long nextId() {
+	private long nextId() {
 		return ++maxId;
 	}
 	
-	public Long createEntity (T entity){
+	public long createEntity (T entity){
+		mapIdEntity.put(maxId, entity);
+		entity.setId(maxId);
 		return nextId();
 	}
 	
@@ -22,15 +24,15 @@ abstract class EntityRepository <T extends Entity_>{
 		return mapIdEntity.values();	
 	}
 	
-	public T getEntityById (Long id){
+	public T getEntityById (long id){
 		return mapIdEntity.get(id);	
 	}
 	
 	public void editEntity (T entity) {
-		//TODO
+		mapIdEntity.replace(entity.getId(), entity);
 	}
 	
-	public void removeEntityById (Long id) {
+	public void removeEntityById (long id) {
 		mapIdEntity.remove(id);
 	}
 }

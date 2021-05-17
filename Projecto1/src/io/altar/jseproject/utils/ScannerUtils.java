@@ -8,10 +8,38 @@ public class ScannerUtils {
 	public int getInt() {
 		do {
 			if(sc.hasNextInt()) {
-				return sc.nextInt();
+				int result = sc.nextInt();
+				sc.nextLine();
+				return result;
 			} else {
 				sc.nextLine();
-				System.out.println("Wrong input! Please insert a valid option:");
+				System.out.println("Wrong input! Please insert a valid number:");
+			}
+		}while(true);
+	}
+	
+	public double getDouble() {
+		do {
+			if(sc.hasNextDouble()) {
+				double result = sc.nextDouble();
+				sc.nextLine();
+				return result;
+			} else {
+				sc.nextLine();
+				System.out.println("Wrong input! Please insert a valid number:");
+			}
+		}while(true);
+	}
+	
+	public long getLong() {
+		do {
+			if(sc.hasNextLong()) {
+				long result = sc.nextLong();
+				sc.nextLine();
+				return result;
+			} else {
+				sc.nextLine();
+				System.out.println("Wrong input! Please insert a valid number:");
 			}
 		}while(true);
 	}

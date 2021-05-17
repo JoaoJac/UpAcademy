@@ -1,17 +1,25 @@
 package io.altar.jseproject.model;
 
 public class Shelf extends Entity_{
-	private long id;
 	private int capacity;
 	private Product pr;
 	private double dailyPrice;
 	
-	public Long getId() {
-		return id;
+	public Shelf() {
+		
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public Shelf(int capacity, double dailyPrice) {
+		this.capacity = capacity;
+		this.dailyPrice = dailyPrice;
 	}
+	
+	public Shelf(int capacity, Product pr, double dailyPrice) {
+		this.capacity = capacity;
+		this.pr = pr;
+		this.dailyPrice = dailyPrice;
+	}
+	
 	public int getCapacity() {
 		return capacity;
 	}
@@ -33,6 +41,6 @@ public class Shelf extends Entity_{
 	
 	@Override
 	public String toString() {
-		return "Shelf [capacity=" + capacity + ", pr=" + pr + ", dailyPrice=" + dailyPrice + "]";
+		return "Shelf [ID="+this.getId()+", capacity=" + capacity + ", " + pr + ", dailyPrice=" + dailyPrice + "]";
 	}
 }
