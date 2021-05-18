@@ -8,12 +8,10 @@ public class ScannerUtils {
 	public int getInt() {
 		do {
 			if(sc.hasNextInt()) {
-				int result = sc.nextInt();
-				sc.nextLine();
-				return result;
+				return sc.nextInt();
 			} else {
 				sc.nextLine();
-				System.out.println("Wrong input! Please insert a valid number:");
+				System.out.println("Input errado! Por favor inserir um número válido:");
 			}
 		}while(true);
 	}
@@ -21,12 +19,10 @@ public class ScannerUtils {
 	public double getDouble() {
 		do {
 			if(sc.hasNextDouble()) {
-				double result = sc.nextDouble();
-				sc.nextLine();
-				return result;
+				return sc.nextDouble();
 			} else {
 				sc.nextLine();
-				System.out.println("Wrong input! Please insert a valid number:");
+				System.out.println("Input errado! Por favor inserir um número válido:");
 			}
 		}while(true);
 	}
@@ -34,12 +30,10 @@ public class ScannerUtils {
 	public long getLong() {
 		do {
 			if(sc.hasNextLong()) {
-				long result = sc.nextLong();
-				sc.nextLine();
-				return result;
+				return sc.nextLong();
 			} else {
 				sc.nextLine();
-				System.out.println("Wrong input! Please insert a valid number:");
+				System.out.println("Input errado! Por favor inserir um número válido:");
 			}
 		}while(true);
 	}
@@ -63,9 +57,21 @@ public class ScannerUtils {
 			}
 			else {
 				sc.nextLine();
-				System.out.println("Option is not between "+min+" and "+max+", please insert a valid option:");
+				System.out.println("Opção não está entre "+min+" e "+max+", por favor insira uma opção válida:");
 			}
 		}while(true);	
+	}
+	
+	public int getIva() {
+		do {
+			int iva = getInt();
+			if(iva == 6 || iva == 13 || iva == 23) {
+				return iva;
+			} else {
+				sc.nextLine();
+				System.out.println("Input errado! Por favor inserir um IVA válido:");
+			}
+		}while(true);
 	}
 }
 

@@ -8,15 +8,15 @@ import io.altar.jseproject.model.Entity_;
 
 abstract class EntityRepository <T extends Entity_>{
 	Map<Long,T> mapIdEntity= new HashMap<>();
-	long maxId = 1;
+	long currentId = 1;
 	
 	private long nextId() {
-		return ++maxId;
+		return ++currentId;
 	}
 	
 	public long createEntity (T entity){
-		mapIdEntity.put(maxId, entity);
-		entity.setId(maxId);
+		mapIdEntity.put(currentId, entity);
+		entity.setId(currentId);
 		return nextId();
 	}
 	

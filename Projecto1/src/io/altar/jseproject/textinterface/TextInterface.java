@@ -159,11 +159,11 @@ public class TextInterface {
 		long id = scu.getLong();
 		Shelf sh = shelfRep.getEntityById(id);
 		Product p = sh.getPr();
-		System.out.println("Inserir desconto");
+		System.out.println("Inserir desconto do Produto");
 		p.setDiscount(scu.getDouble());
-		System.out.println("Inserir iva");
+		System.out.println("Inserir iva do Produto");
 		p.setIva(scu.getInt());
-		System.out.println("Inserir preço");
+		System.out.println("Inserir preço do Produto");
 		p.setPrice(scu.getInt());
 		System.out.println("Inserir capacidade");
 		sh.setCapacity(scu.getInt());
