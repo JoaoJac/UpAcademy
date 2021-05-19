@@ -10,11 +10,11 @@ public class MenuEditProduct extends State {
 		long id = scu.getLong();
 		Product p = prodRep.getEntityById(id);
 		System.out.println("Inserir desconto");
-		p.setDiscount(scu.getDouble());
+		p.setDiscount(scu.getInt());
 		System.out.println("Inserir iva");
 		p.setIva(scu.getInt());
 		System.out.println("Inserir preço");
-		p.setPrice(scu.getInt());
+		p.setPrice(scu.getDouble());
 		prodRep.editEntity(p);
 		System.out.println("--- Produto editado ---");
 		return 1;

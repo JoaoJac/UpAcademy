@@ -74,11 +74,11 @@ public class TextInterface {
 
 	private void ecraCriarProduto() {
 		System.out.println("Inserir desconto");
-		double desconto = scu.getDouble();
+		int desconto = scu.getInt();
 		System.out.println("Inserir iva");
 		int iva = scu.getInt();
 		System.out.println("Inserir preço");
-		int preco = scu.getInt();
+		double preco = scu.getDouble();
 		Product p = new Product(desconto,iva,preco);
 		prodRep.createEntity(p);
 		System.out.println("--- Produto criado ---");
@@ -88,11 +88,11 @@ public class TextInterface {
 		long id = scu.getLong();
 		Product p = prodRep.getEntityById(id);
 		System.out.println("Inserir desconto");
-		p.setDiscount(scu.getDouble());
+		p.setDiscount(scu.getInt());
 		System.out.println("Inserir iva");
 		p.setIva(scu.getInt());
 		System.out.println("Inserir preço");
-		p.setPrice(scu.getInt());
+		p.setPrice(scu.getDouble());
 		prodRep.editEntity(p);
 		System.out.println("--- Produto editado ---");
 	}
@@ -160,11 +160,11 @@ public class TextInterface {
 		Shelf sh = shelfRep.getEntityById(id);
 		Product p = sh.getPr();
 		System.out.println("Inserir desconto do Produto");
-		p.setDiscount(scu.getDouble());
+		p.setDiscount(scu.getInt());
 		System.out.println("Inserir iva do Produto");
 		p.setIva(scu.getInt());
 		System.out.println("Inserir preço do Produto");
-		p.setPrice(scu.getInt());
+		p.setPrice(scu.getDouble());
 		System.out.println("Inserir capacidade");
 		sh.setCapacity(scu.getInt());
 		System.out.println("Inserir preço diário de aluguer");
