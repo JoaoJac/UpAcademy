@@ -53,7 +53,7 @@ public class Product extends Entity_{
 	
 	@Override
 	public String toString() {
-		return "Product [ID="+this.getId()+", shelfIdList=" + shelfIdList + ", discount=" + discount + ", iva=" + iva + ", price=" + price +"€"+"]";
+		return "Product [ID="+this.getId()+", shelfIdList=" + shelfIdList + ", discount=" + discount + "%" +", iva=" + iva + "%" + ", price=" + price +"€"+"]";
 	}
 		
 }

@@ -16,6 +16,6 @@ public class MenuShelf extends State {
 	}
 	
 	private void listarPrateleiras() {
-		shelfRep.getAll().forEach(x -> System.out.println(x));
+		shelfRep.getAll().forEach(System.out::println);
 	}
 }

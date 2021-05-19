@@ -16,7 +16,7 @@ public class MenuProduct extends State {
 	}
 	
 	private void listarProdutos() {
-		prodRep.getAll().forEach(x -> System.out.println(x));
+		prodRep.getAll().forEach(System.out::println);
 		
 	}
 }
