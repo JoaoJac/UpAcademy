@@ -44,7 +44,7 @@ public class ScannerUtils {
 				return sc.nextLine();
 			} else {
 				sc.nextLine();
-				System.out.println("Wrong name! Please insert a valid Name:");
+				System.out.println("Wrong input! Please insert a valid text:");
 			}
 		}while (true);
 	}
@@ -72,6 +72,14 @@ public class ScannerUtils {
 				System.out.println("Input errado! Por favor inserir um IVA válido:");
 			}
 		}while(true);
+	}
+	
+	public String getAnswer() {
+		do {
+			if(sc.hasNext()) {
+				return sc.next();
+			} 
+		}while (true);
 	}
 }
 

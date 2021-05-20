@@ -24,11 +24,11 @@ public class StateMachine {
 			{ 1 },    			  		// State 3 -> MenuCreateProduct
 			{ 1 },    			  		// State 4 -> MenuEditProduct
 			{ 1 },    			  		// State 5 -> MenuConsultProduct
-			{ 1 },    			  		// State 6 -> MenuRemoveProduct
+			{ 1, 6 },    			  	// State 6 -> MenuRemoveProduct
 			{ 2 },    			  		// State 7 -> MenuCreateShelf
 			{ 2 },    			  		// State 8 -> MenuEditShelf
 			{ 2 },    			  		// State 9 -> MenuConsultShelf
-			{ 2 },    			  		// State 10 -> MenuRemoveShelf
+			{ 2, 10 },    			  	// State 10 -> MenuRemoveShelf
 	};
 	// 3. current
 	private int current = 0;
