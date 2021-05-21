@@ -7,7 +7,7 @@ public class MenuCreateProduct extends State {
 	@Override
 	public int show() {
 		System.out.println("Inserir desconto");
-		int desconto = scu.getInt();
+		int desconto = scu.getIntInRange(1, 99);
 		System.out.println("Inserir iva");
 		int iva = scu.getIva();
 		System.out.println("Inserir preço");
