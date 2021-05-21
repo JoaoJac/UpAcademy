@@ -12,7 +12,7 @@ public class MenuRemoveProduct extends State {
 			System.out.println("Deseja remover "+ prodRep.getEntityById(id) + "? (Sim or Não)");
 			if(scu.getAnswer().equalsIgnoreCase("sim")) {
 				List<Long> shelvesId = prodRep.getEntityById(id).getShelfList();
-				shelvesId.forEach(x -> shelfRep.removeEntityById(x));
+				shelvesId.forEach(x -> shelfRep.getEntityById(x).setPr(null));
 				prodRep.removeEntityById(id);
 				System.out.println("--- Produto removido ---");
 			}

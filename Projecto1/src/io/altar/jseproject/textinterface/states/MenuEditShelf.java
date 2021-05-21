@@ -15,7 +15,7 @@ public class MenuEditShelf extends State {
 			System.out.println("Inserir desconto do produto");
 			p.setDiscount(scu.getInt());
 			System.out.println("Inserir iva do produto");
-			p.setIva(scu.getInt());
+			p.setIva(scu.getIva());
 			System.out.println("Inserir preço do produto");
 			p.setPrice(scu.getDouble());
 		}
