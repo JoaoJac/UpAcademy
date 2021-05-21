@@ -1,5 +1,7 @@
 package io.altar.jseproject.textinterface.states;
 
+import java.util.List;
+
 public class MenuRemoveProduct extends State {
 
 	@Override
@@ -9,6 +11,8 @@ public class MenuRemoveProduct extends State {
 		if(prodRep.getEntityById(id) != null) {
 			System.out.println("Deseja remover "+ prodRep.getEntityById(id) + "? (Sim or Não)");
 			if(scu.getAnswer().equalsIgnoreCase("sim")) {
+				List<Long> shelvesId = prodRep.getEntityById(id).getShelfList();
+				shelvesId.forEach(x -> shelfRep.removeEntityById(x));
 				prodRep.removeEntityById(id);
 				System.out.println("--- Produto removido ---");
 			}
