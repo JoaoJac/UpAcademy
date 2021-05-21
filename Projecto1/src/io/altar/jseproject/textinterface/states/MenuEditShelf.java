@@ -13,14 +13,14 @@ public class MenuEditShelf extends State {
 		Product p = sh.getPr();
 		if(p != null) {
 			System.out.println("Inserir desconto do produto");
-			p.setDiscount(scu.getInt());
+			p.setDiscount(scu.getIntInRange(1, 99));
 			System.out.println("Inserir iva do produto");
 			p.setIva(scu.getIva());
 			System.out.println("Inserir preço do produto");
 			p.setPrice(scu.getDouble());
 		}
 		System.out.println("Inserir capacidade");
-		sh.setCapacity(scu.getInt());
+		sh.setCapacity(scu.getIntInRange(0,1));
 		System.out.println("Inserir preço diário de aluguer");
 		sh.setDailyPrice(scu.getDouble());
 		shelfRep.editEntity(sh);
