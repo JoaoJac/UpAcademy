@@ -11,12 +11,14 @@ public class MenuEditShelf extends State {
 		long id = scu.getLong();
 		Shelf sh = shelfRep.getEntityById(id);
 		Product p = sh.getPr();
-		System.out.println("Inserir desconto do produto");
-		p.setDiscount(scu.getInt());
-		System.out.println("Inserir iva do produto");
-		p.setIva(scu.getInt());
-		System.out.println("Inserir preço do produto");
-		p.setPrice(scu.getDouble());
+		if(p != null) {
+			System.out.println("Inserir desconto do produto");
+			p.setDiscount(scu.getInt());
+			System.out.println("Inserir iva do produto");
+			p.setIva(scu.getInt());
+			System.out.println("Inserir preço do produto");
+			p.setPrice(scu.getDouble());
+		}
 		System.out.println("Inserir capacidade");
 		sh.setCapacity(scu.getInt());
 		System.out.println("Inserir preço diário de aluguer");
